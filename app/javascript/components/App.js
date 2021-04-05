@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Home } from './Home'
 import { About } from './About'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 const App = () => {
