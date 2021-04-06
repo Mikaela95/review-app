@@ -1,0 +1,7 @@
+.categoryCard {
+  margin: 2rem;
+}
+
+.categoryCard:hover {
+  opacity: 0.5;
+}
