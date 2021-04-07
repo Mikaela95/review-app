@@ -4,25 +4,21 @@ import { Home } from './Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from "react-bootstrap/Jumbotron";
 import { NavBarComponent } from "./Navbar.js";
-import { ExpenseList } from "./ExpenseList.js";
+import { RestaurantList } from "./RestaurantList.js";
 import { EditExpense } from "./EditExpense.js";
 import { CategoryItem } from "./CategoryItem.js";
 import { DeleteExpense } from "./DeleteExpense.js";
 
 const App = () => {
 	return (
-		<Router>
-			<div className="App" style={{backgroundColor: '#e9ecef'}}>
-				<NavBarComponent>
+		<Switch>
+			<div>
+				<NavBarComponent />
 					<Jumbotron style={{ marginBottom: "auto" }}>
-						<Route path="/" exact component={ExpenseList} />
-						<Route path="/category/:id" component={CategoryItem} />
-          				<Route path="/edit" component={EditExpense} />
-          				<Route path="/delete" component={DeleteExpense} />
+						<Route path="/" component={RestaurantList} />
 					</Jumbotron>
-				</NavBarComponent>
 			</div>
-		</Router>
+		</Switch>
 	)
 }
 

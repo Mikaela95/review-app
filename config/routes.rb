@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'pages/categories'
   root 'pages#index'
-  match '*path', to: 'pages#index', via: :all
+  namespace :api do
+  	namespace :v1 do
+  		resources :restaurants
+  		resources :reviews 
+  	end
+  end
+  get '*path', to: 'pages#index', via: :all
 end
