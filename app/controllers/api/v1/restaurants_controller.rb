@@ -3,20 +3,22 @@ module Api
 		class RestaurantsController < ApplicationController
 			protect_from_forgery with: :null_session
 			def index
-				render json: Restaurant.all
+				restaurant = Restaurant.all
+
+				render json: restaurant.to_json(include: [:reviews])
+
 			end
 
 			def show
-				puts params[:id]
-    			render json: Restaurant.find(params[:id])
+				restaurant = Restaurant.find(params[:id])
+				# puts params[:id]
+    			render json: restaurant.to_json(include: [:reviews])
 			end
 
 			def create
-				restaurant = Restaurant.create(name: params[:name], image_url: params[:image_url], delivery: params[:delivery])
-			    restaurant_valid = restaurant.valid?
-			    p restaurant
-			    p restaurant_valid
-			    if restaurant_valid
+				restaurant = Restaurant.new(name: params[:name], image_url: params[:image_url], delivery: params[:delivery])
+			    
+			    if restaurant.save
 			      render json: {message: 'Successfully created a restaurant!'}, status: 200
 			    else
 			      render json: {message: 'Unable to create a restaurant'}, status: 400
@@ -30,7 +32,8 @@ module Api
 			end
 
 			def destroy
-				Restaurant.destroy(params[:id])
+				restaurant = Restaurant.find(params[:id])
+				restaurant.destroy
     			render json: {message: 'ENTRY HAS BEEN DELETED!!!!!'}
 			end
 		end

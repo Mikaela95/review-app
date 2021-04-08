@@ -36,14 +36,16 @@ const RestaurantList = () => {
       <Row md={4} style={{justifyContent: 'space-evenly'}}>
           {restaurants.map((restaurant) => (
               <Card className="categoryCard" key={restaurant.id}>
-                <Card.Img variant="top" src={restaurant.image_url}/>
-                <Card.Body style={{color: 'black'}}>
-                  <Card.Title>{restaurant.name}</Card.Title>
-                  <Card.Text style={{color: 'black'}}>{restaurant.delivery}</Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </Card.Footer>
+                <Link to={`restaurants/${restaurant.id}`}>
+                  <Card.Img variant="top" src={restaurant.image_url}/>
+                  <Card.Body style={{color: 'black'}}>
+                    <Card.Title>{restaurant.name}</Card.Title>
+                    <Card.Text style={{color: 'black'}}>{restaurant.delivery}</Card.Text>
+                  </Card.Body>
+                  <Card.Footer>
+                    <small className="text-muted">Number of reviews </small>
+                  </Card.Footer>
+                </Link>
               </Card>
           ))}
       </Row>
