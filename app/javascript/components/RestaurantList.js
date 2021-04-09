@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CardColumns from "react-bootstrap/CardColumns";
 import { NavBarComponent } from "./Navbar.js";
+import Subway from "./Subway.jpeg";
 
 import "./ExpenseList.css";
 
@@ -43,7 +44,7 @@ const RestaurantList = () => {
                     <Card.Text style={{color: 'black'}}>{restaurant.delivery}</Card.Text>
                   </Card.Body>
                   <Card.Footer>
-                    <small className="text-muted">Number of reviews </small>
+                    <small className="text-muted">Number of reviews {restaurant.reviews.length}</small>
                   </Card.Footer>
                 </Link>
               </Card>

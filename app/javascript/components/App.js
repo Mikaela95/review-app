@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from "react-bootstrap/Jumbotron";
 import { NavBarComponent } from "./Navbar.js";
 import { RestaurantList } from "./RestaurantList.js";
-import { EditReview } from "./EditExpense.js";
+import { EditReview } from "./EditReview.js";
 import { DeleteReview } from "./DeleteReview.js";
 import { Restaurant } from "./Restaurant.js";
 
