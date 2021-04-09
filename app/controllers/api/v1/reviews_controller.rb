@@ -12,6 +12,12 @@ module Api
 			    end
 			end
 
+			def update
+				review = Review.find(params[:id])
+    			review.update(name: params[:name], description: params[:description], rating: params[:rating], restaurant_id: params[:restaurant_id])
+    			render json: {type: 'Successfully updated entry!'}
+			end
+
 			def destroy
 		    	review = Review.find(params[:id])
 		    	if review.destroy

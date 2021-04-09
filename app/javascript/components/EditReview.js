@@ -1,15 +1,69 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 
 const EditReview = (props) => {
-  console.log(props)  
+  const [formState, setFormState] = useState({
+      name: "",
+      description: "",
+      rating: "",
+  });
+  const [reviewsList, setReviewsList] = useState([]);
+  
+
+  const handleEditReview = (review, newData) => {
+    const newReview = [...reviewsList];
+    newReview[review] = newData;
+    setReviewsList(newReviews);
+
+    fetch(`http://localhost:4000/api/expenses/update-expense/${expense}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    }).then((response) => {
+      console.log("PUT response:", response);
+    });
+  };  
 
   return (
-    <div>
-      <p>testing review component</p>
-    </div>
+    <Form onSubmit={handleSubmit}>
+      <Form.Row style={{ margin: "20px -5px" }}>
+        <Col xs={4}>
+          <Form.Control
+            placeholder="Your name"
+            name="name"
+            value={formState.name}
+            onChange={handleInputChange}
+            required
+          />
+        </Col>
+        <Col>
+          <Form.Control
+            placeholder="Description"
+            name="description"
+            value={formState.description}
+            onChange={handleInputChange}
+            required
+          />
+        </Col>
+        <Col>
+          <Form.Control
+            placeholder="Rating out of 5"
+            name="rating"
+            value={formState.rating}
+            onChange={handleInputChange}
+            required
+          />
+        </Col>
+        <Col>
+          <Button type="submit">Edit Review</Button>
+        </Col>
+      </Form.Row>
+    </Form>
   );
 };
 
