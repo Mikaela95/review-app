@@ -12,14 +12,13 @@ const EditReview = (props) => {
   });
   const [reviewsList, setReviewsList] = useState([]);
   
-
   const handleEditReview = (review, newData) => {
     const newReview = [...reviewsList];
     newReview[review] = newData;
-    setReviewsList(newReviews);
+    setReviewsList(newReview);
 
-    fetch(`http://localhost:4000/api/expenses/update-expense/${expense}`, {
-      method: "PUT",
+    fetch(`/api/v1/reviews/${review}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,7 +26,21 @@ const EditReview = (props) => {
     }).then((response) => {
       console.log("PUT response:", response);
     });
-  };  
+  };
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const newState = { ...formState };
+    newState[e.target.name] = e.target.value;
+    setFormState(newState);
+  };
+
+  const handleSubmit = (e) => {
+    window.location.reload();
+    e.preventDefault();
+    handleEditReview(props.reviewData.id, formState);
+  }; 
+
 
   return (
     <Form onSubmit={handleSubmit}>
