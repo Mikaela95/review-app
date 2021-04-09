@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Review } from './Review'
+// import { Review } from './Review'
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
+import Button from 'react-bootstrap/Button'
+import { DeleteReview } from "./DeleteReview";
 
 const Restaurant = (props) => {
 	const [restaurant, setRestaurant] = useState([]);
@@ -23,28 +25,31 @@ const Restaurant = (props) => {
 	}, [])
 
 
-
-
 	return (
 		<div>
 			<p>{restaurant.name}</p>
 			<p>Delivery price: {restaurant.delivery}</p>
+			<Button variant="primary">Add</Button>
 			{ 
 				loaded && 
 				(
 					<CardGroup >
-				        <Row md={4} style={{justifyContent: 'space-evenly'}}>
+				        <Row md={8} style={{justifyContent: 'space-evenly'}}>
 				          {restaurant.reviews.map((el) => (
 				            <Card className="categoryCard" key={el.id}>
-				             
 				                <Card.Body style={{color: 'black'}}>
-				                  <Card.Title>{el.name}</Card.Title>
-				                  <Card.Text>{el.description}</Card.Text>
+					                <Link to={`delete/${restaurant.id}`}>
+					                	<Button>Delete</Button>
+					                </Link>
+
+				                	
+					                
+				                 	<Card.Title>{el.name}</Card.Title>
+				                  	<Card.Text>{el.description}</Card.Text>
 				                </Card.Body>
 				                <Card.Footer>
 				                  <small className="text-muted">Rating score {el.rating}</small>
 				                </Card.Footer>
-				              
 				            </Card>
 				          ))}
 				        </Row>
