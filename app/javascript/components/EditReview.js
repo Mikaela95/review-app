@@ -36,7 +36,7 @@ const EditReview = (props) => {
   };
 
   const handleSubmit = (e) => {
-    window.location.reload();
+    // window.location.reload();
     e.preventDefault();
     handleEditReview(props.reviewData.id, formState);
   }; 
