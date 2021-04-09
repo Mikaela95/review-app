@@ -3,14 +3,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
-const DeleteReview = (props) => {
+const AddReview = (props) => {
   console.log(props)  
 
   return (
     <div>
-      <p>testing delete component</p>
+      <p>testing review component</p>
     </div>
   );
 };
 
-export { DeleteReview };
+export { AddReview };
